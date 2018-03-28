@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euf -o pipefail
 
+docker-compose --version
+
 docker-compose -f tests/unit/docker/docker-compose.test.yml up \
     --build --force-recreate --remove-orphans
 
