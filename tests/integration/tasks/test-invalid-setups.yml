@@ -11,4 +11,5 @@
 
 - name: verify invalid setup
   assert:
-    that: versioned_and_latest_install.failed
+    that:
+      - versioned_and_latest_install.failed
