@@ -10,7 +10,8 @@
 
 - name: verify failure
   assert:
-    that: non_existent_install.failed
+    that:
+      - non_existent_install.failed
 
 - name: install Conda packge version that does not exist (expect failure)
   conda:
@@ -23,7 +24,8 @@
 
 - name: verify failure
   assert:
-    that: non_existent_install.failed
+    that:
+      - non_existent_install.failed
 
 - name: install latest Conda packge, fixed at a specific version (expect failure)
   conda:
@@ -36,4 +38,5 @@
 
 - name: verify failure
   assert:
-    that: invalid_setup.failed
+    that:
+      - invalid_setup.failed
