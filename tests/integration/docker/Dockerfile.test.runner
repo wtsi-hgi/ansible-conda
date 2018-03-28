@@ -14,4 +14,4 @@ RUN pip --disable-pip-version-check install -r tests/integration/runner-requirem
 WORKDIR /ansible-conda/tests/integration
 #CMD ["ansible-playbook", "-i", "inventory.ini", "-vvv", "test.yml"]
 
-CMD "ssh -v root@ansible-conda-integration-conda-py2-4-4-10-test-instance"
+CMD ["ssh", "-v", "root@ansible-conda-integration-conda-py2-4-4-10-test-instance"]
