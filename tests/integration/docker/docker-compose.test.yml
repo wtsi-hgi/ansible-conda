@@ -16,7 +16,7 @@ services:
     container_name: ansible-conda-integration-conda-py3-4-4-10-test-instance
     build:
       context: ../../../
-      dockerfile: tests/integration/docker/Dockerfile.test.integration
+      dockerfile: tests/integration/docker/Dockerfile.test.target
       args:
         DOCKER_REPOSITORY: continuumio/miniconda3
         CONDA_VERSION: 4.4.10
@@ -25,7 +25,7 @@ services:
     container_name: ansible-conda-integration-conda-py2-4-4-10-test-instance
     build:
       context: ../../../
-      dockerfile: tests/integration/docker/Dockerfile.test.integration
+      dockerfile: tests/integration/docker/Dockerfile.test.target
       args:
         DOCKER_REPOSITORY: continuumio/miniconda
         CONDA_VERSION: 4.4.10

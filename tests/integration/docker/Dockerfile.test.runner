@@ -2,15 +2,19 @@ FROM python:3
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        sshpass \
+         sshpass \
     && rm -rf /var/lib/apt/lists/*
 
+RUN curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /opt/wait-for-it.sh \
+    && chmod 0777 /opt/wait-for-it.sh
+
 WORKDIR /ansible-conda
-ADD . .
+ADD tests/integration/runner-requirements.txt tests/integration/runner-requirements.txt
 RUN pip --disable-pip-version-check install -r tests/integration/runner-requirements.txt
+ADD . .
 
 WORKDIR /ansible-conda/tests/integration
-ENV ANSIBLE_HOST_KEY_CHECKING=False
-#CMD ["ansible-playbook", "-i", "inventory.ini", "-vvv", "test.yml"]
+RUN chmod 0777 docker/run-runner.sh
 
-CMD "sh -c 'ssh -o StrictHostKeyChecking=no root@ansible-conda-integration-conda-py2-4-4-10-test-instance'"
+ENV ANSIBLE_HOST_KEY_CHECKING=False
+CMD ["docker/run-runner.sh"]

@@ -1,5 +1,5 @@
 ---
 
-- hosts: conda-testers
+- hosts: targets
   roles:
     - name: conda-test
